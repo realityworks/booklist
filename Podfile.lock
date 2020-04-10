@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (5.1.0)
+  - TinyConstraints (4.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - TinyConstraints
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - TinyConstraints
+
+SPEC CHECKSUMS:
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
+
+PODFILE CHECKSUM: b73f07cb0e1d272aead3bc70b5940cefc907c5ff
+
+COCOAPODS: 1.9.1

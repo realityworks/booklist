@@ -1,0 +1,28 @@
+DEVELOPMENT DESIGN WRITE UP
+---------------------------
+
+The application will display a list of books, with details. The list can be searchable using a search function at the top of the list. When the user finishes typing, with a 3 second delay the list is the updated from the search results. 
+
+The book list will be extended by pages as the user loads the next page in the search.
+
+The user can select a book and is shown more details.
+
+
+KEY ITEMS 
+
+LIST OF BOOKS - A collection of of books that have been downloaded. 
+SEARCH - Search term that filters the results. Debounce the search term by 3 seconds.
+LOADER - The model loader that loads the list of books.
+PAGES - Aspect of the model that represents which page we last loaded and also which page will be loaded next.
+
+
+System Breakdown
+
+DATA MODEL 
+	- List of books. Individual Book.
+USECASE 
+	- Load the books from a specific page with a search term.
+SERVICES 
+	- REST web service to load the data model : Alamofire
+UTILITIES
+	- UI Component management to simplify non-storyboard layout : TinyCostraints

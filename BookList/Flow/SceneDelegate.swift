@@ -6,6 +6,8 @@
 //  Copyright © 2020 Realityworks. All rights reserved.
 //
 
+import UIKit
+
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

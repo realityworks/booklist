@@ -19,7 +19,7 @@ struct Booklist: Decodable {
     struct Book: Decodable {
         let title: String
         let authors: [Author]
-        let cover: [Cover]
+        let cover: Cover
         
         struct Author: Decodable {
             let name: String

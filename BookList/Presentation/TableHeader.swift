@@ -22,20 +22,29 @@ class TableHeader: UITableViewHeaderFooterView {
         textField.returnKeyType = .search
         
         // Add components
-        let containerView = UIStackView()
-        containerView.axis = .horizontal
-        containerView.alignment = .fill
-        containerView.spacing = 8
-        containerView.edgesToSuperview()
-        containerView.height(150)
+        let stackView = UIStackView()
+        let containerView = UIView()
         
         contentView.addSubview(containerView)
+        containerView.topToSuperview()
+        containerView.bottomToSuperview()
+        containerView.leftToSuperview(offset: 16)
+        containerView.rightToSuperview(offset: -16)
+        containerView.height(60)
+        
+        containerView.addSubview(stackView)
+        
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.edgesToSuperview()
         
         label.text = "Query: "
-        label.width(50)
+        label.width(100)
         
-        containerView.addSubview(label)        
-        containerView.addSubview(textField)
+        textField.backgroundColor = .white
+        
+        stackView.addArrangedSubview(label)
+        stackView.addArrangedSubview(textField)
     }
     
     required init?(coder: NSCoder) {

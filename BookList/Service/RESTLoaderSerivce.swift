@@ -10,13 +10,14 @@ import Foundation
 
 class RESTLoaderService: LoaderService {
     func loadBooklist(with query: String, nextPageToken: String?, onCompleted: @escaping (Booklist?)->Void) {
-        let urlString = "https://api.storytel.net/search?query="
-        guard var url = URL(string: urlString) else { return }
+        var urlString = "https://api.storytel.net/search?query="
         
-        url.appendPathComponent(query)
+        urlString.append(query)
         nextPageToken.map {
-            url.appendPathComponent("&page=\($0)")
+            urlString.append("&page=\($0)")
         }
+        
+        guard let url = URL(string: urlString) else { return }
         
         // Just use a URL Request here, we may need to update headers, or type
         URLSession.shared.dataTask(with: url) { data, response, urlError in

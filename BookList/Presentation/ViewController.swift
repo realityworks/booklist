@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         style()
         configure()
-        viewModel.load()
     }
 
     private func style() {
@@ -41,7 +40,11 @@ class ViewController: UIViewController {
         tableView.edgesToSuperview()
         tableView.allowsSelection = false
         tableView.estimatedRowHeight = 140
+        tableView.estimatedSectionHeaderHeight = 60
+        
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.rowHeight = UITableView.automaticDimension
+        
         tableView.separatorStyle = .none
 
         title = "StoryTel"
@@ -53,6 +56,7 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
         tableView.register(LoadingViewCell.self, forCellReuseIdentifier: LoadingViewCell.identifier)
+        tableView.register(TableHeader.self, forHeaderFooterViewReuseIdentifier: TableHeader.identifier)
         
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to reload")
         refreshControl.addTarget(self, action: #selector(reload), for: UIControl.Event.valueChanged)
@@ -105,7 +109,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         header.textField.text = viewModel.query
         header.textField.addTarget(self, action: #selector(queryDidEdit), for: .editingChanged)
-        header.textField.addTarget(self, action: #selector(queryEditDidEnd), for: [.editingDidEnd, .editingDidEndOnExit])
+        header.textField.addTarget(self, action: #selector(queryEditDidEnd), for: [.editingDidEnd])
 
         return header
     }

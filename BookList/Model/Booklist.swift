@@ -9,12 +9,12 @@
 import Foundation
 
 struct Booklist: Decodable {
-    let query: String
-    let filter: String
-    let nextPageToken: String
-    let totalCount: Int
+    var query: String
+    var filter: String
+    var nextPageToken: String
+    var totalCount: Int
     
-    let book: [Book]
+    var items: [Book]
     
     struct Book: Decodable {
         let title: String

@@ -10,15 +10,22 @@ import Foundation
 
 class UseCases {
     private let loaderService: LoaderService
-    var onBooklistLoaded: ((String?, Booklist?)->())? = nil
+    var onBooklistLoaded: ((Booklist?)->())? = nil
+    var onBooklistAppend: ((Booklist?)->())? = nil
     
     init(_ dependencies: Dependencies = .real) {
         self.loaderService = dependencies.loaderService
     }
     
-    func loadData(with query: String, nextPageToken: String? = nil) {
+    func loadData(with query: String) {
         loaderService.loadBooklist(with: query, nextPageToken: nil, onCompleted: { [unowned self] booklist in
-            self.onBooklistLoaded?(booklist?.nextPageToken, booklist)
+            self.onBooklistLoaded?(booklist)
+        })
+    }
+    
+    func loadNextDataNext(with query: String, nextPageToken: String) {
+        loaderService.loadBooklist(with: query, nextPageToken: nil, onCompleted: { [unowned self] booklist in
+            self.onBooklistAppend?(booklist)
         })
     }
 }

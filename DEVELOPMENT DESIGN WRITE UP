@@ -26,3 +26,15 @@ SERVICES
 	- REST web service to load the data model : Alamofire
 UTILITIES
 	- UI Component management to simplify non-storyboard layout : TinyCostraints
+USER INTERFACE
+	- ViewController
+		- Search bar
+		- Table/List View
+			- Individual Cell
+	- Styling extensions
+		- Colours
+		- Fonts
+
+
+Additional Technical notes
+Dependency injection for view models.

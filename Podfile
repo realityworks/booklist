@@ -7,5 +7,4 @@ target 'BookList' do
 
   # Pods for BookList
   pod 'TinyConstraints'
-  pod 'Alamofire'
 end

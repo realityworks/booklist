@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     let viewModel: ViewModel = ViewModel()
 
     // MARK: View
-    let tableView = UITableView()
+    let tableView = UITableView(frame: .zero, style: .grouped)
     let refreshControl = UIRefreshControl()
     
     init() {
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfBooks > 0 ? viewModel.numberOfBooks + 1 : 0
+        return viewModel.numberOfBooks > 0 ? viewModel.numberOfRows : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,7 +109,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         header.textField.text = viewModel.query
         header.textField.addTarget(self, action: #selector(queryDidEdit), for: .editingChanged)
-        header.textField.addTarget(self, action: #selector(queryEditDidEnd), for: [.editingDidEnd])
+        header.textField.addTarget(self, action: #selector(queryEditDidEnd), for: [.editingDidEndOnExit])
 
         return header
     }
@@ -118,7 +118,21 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 extension ViewController: StoreLoaderDelegate {
     func didLoadBooklist() {
         DispatchQueue.main.async { [unowned self] in
-            self.tableView.reloadData()
+            UIView.transition(with: self.tableView,
+                              duration: 0.35,
+                              options: .transitionCrossDissolve,
+                              animations: { self.tableView.reloadData() })
+        }
+    }
+    
+    func didLoadBooklist(oldCount: Int, newCount: Int) {
+        DispatchQueue.main.async { [unowned self] in
+            
+            //UIView.animate(withDuration: 0.35, animations: {
+                self.tableView.beginUpdates()
+            self.tableView.insertRows(at: (oldCount..<newCount).map { IndexPath(row: $0, section: 0) }, with: .fade)
+                self.tableView.endUpdates()
+            //})
         }
     }
     

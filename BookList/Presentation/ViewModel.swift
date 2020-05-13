@@ -28,8 +28,7 @@ class ViewModel {
     }
     
     func loadNextPage() {
-        guard let nextPageToken = store.booklist?.nextPageToken else { return }
-        useCases.loadNextDataNext(with: query, nextPageToken: nextPageToken)
+        useCases.loadNextDataNext(with: query, page: store.pageCount)
     }
     
     func listenForUpdates(delegate: StoreLoaderDelegate) {
@@ -50,7 +49,11 @@ class ViewModel {
 extension ViewModel {
     var numberOfBooks: Int {
         store.booklist?.items.count ?? 0
-    }    
+    }
+    
+    var numberOfRows: Int {
+        return store.booklist?.nextPageToken == nil ? numberOfBooks : numberOfBooks + 1
+    }
 }
 
 

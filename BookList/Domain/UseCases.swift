@@ -18,13 +18,13 @@ class UseCases {
     }
     
     func loadData(with query: String) {
-        loaderService.loadBooklist(with: query, nextPageToken: nil, onCompleted: { [unowned self] booklist in
+        loaderService.loadBooklist(with: query, page: nil, onCompleted: { [unowned self] booklist in
             self.onBooklistLoaded?(booklist)
         })
     }
     
-    func loadNextDataNext(with query: String, nextPageToken: String) {
-        loaderService.loadBooklist(with: query, nextPageToken: nil, onCompleted: { [unowned self] booklist in
+    func loadNextDataNext(with query: String, page: Int) {
+        loaderService.loadBooklist(with: query, page: page, onCompleted: { [unowned self] booklist in
             self.onBooklistAppend?(booklist)
         })
     }

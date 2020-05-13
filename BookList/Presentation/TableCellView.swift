@@ -26,33 +26,34 @@ class TableViewCell: UITableViewCell {
         
         imageContainer.leftToSuperview()
         imageContainer.topToSuperview()
-        imageContainer.width(90)
+        imageContainer.bottomToSuperview()
+        imageContainer.width(100)
         imageContainer.aspectRatio(1)
         
         imageContainer.addSubview(containedImageView)
         containedImageView.centerYToSuperview()
         containedImageView.centerXToSuperview()
-        containedImageView.width(60)
+        containedImageView.width(90)
         containedImageView.aspectRatio(1)
-        containedImageView.contentMode = .scaleAspectFill
+        containedImageView.contentMode = .scaleAspectFit
         
         contentView.addSubview(titleLabel)
         
-        titleLabel.font = .boldSystemFont(ofSize: 20)
+        titleLabel.font = .boldSystemFont(ofSize: 18)
+        titleLabel.numberOfLines = 0
         
-        titleLabel.height(20)
         titleLabel.leftToRight(of: imageContainer, offset: 8)
         titleLabel.rightToSuperview()
-        titleLabel.topToSuperview(offset: 8)
+        titleLabel.topToSuperview(offset: 16)
             
         contentView.addSubview(descriptionLabel)
         
-        descriptionLabel.font = .systemFont(ofSize: 16)
+        descriptionLabel.font = .systemFont(ofSize: 14)
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
         
         descriptionLabel.leftToRight(of: imageContainer, offset: 8)
-        descriptionLabel.topToBottom(of: titleLabel, offset: 8)
+        descriptionLabel.topToBottom(of: titleLabel, offset: 16)
         descriptionLabel.rightToSuperview()
         descriptionLabel.bottomToSuperview()
 
@@ -63,7 +64,6 @@ class TableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        containedImageView.contentMode = .scaleAspectFill
         containedImageView.image = nil
         descriptionLabel.text = ""
         titleLabel.text = ""

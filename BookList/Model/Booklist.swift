@@ -11,7 +11,7 @@ import Foundation
 struct Booklist: Decodable {
     var query: String
     var filter: String
-    var nextPageToken: String
+    var nextPageToken: String?
     var totalCount: Int
     
     var items: [Book]

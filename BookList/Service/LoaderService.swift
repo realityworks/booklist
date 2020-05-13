@@ -12,7 +12,7 @@ import Foundation
 
 protocol LoaderService {
     func loadBooklist(with query: String,
-                      nextPageToken: String?,
+                      page: Int?,
                       onCompleted: @escaping (Booklist?)->Void)
 }
 

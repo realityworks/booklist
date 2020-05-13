@@ -24,7 +24,7 @@ class LoadingViewCell: UITableViewCell {
         contentView.addSubview(containerView)
         
         containerView.edgesToSuperview()
-        containerView.height(100)
+        containerView.height(60)
         
         containerView.addSubview(loadingIndicator)
         loadingIndicator.centerInSuperview()

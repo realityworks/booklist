@@ -13,14 +13,17 @@ class ViewModel {
     private let store: Store
     private let useCases: UseCases
     
-    var query: String = ""
+    var query: String = "" { didSet {
+            load()
+        }
+    }
     
     init(_ dependencies: Dependencies = .real) {
         self.store = dependencies.store
         self.useCases = dependencies.useCases
     }
     
-    func load() {
+    private func load() {
         useCases.loadData(with: query)
     }
     

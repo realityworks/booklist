@@ -66,6 +66,16 @@ class ViewController: UIViewController {
         viewModel.load()
         self.refreshControl.endRefreshing()
     }
+    
+    @objc
+    private func queryDidEdit(sender: UITextField) {
+    }
+    
+    @objc
+    private func queryEditDidEnd(sender: UITextField) {
+        viewModel.query = sender.text ?? ""
+        sender.resignFirstResponder()
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -81,6 +91,16 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableHeader.identifier) as? TableHeader else { return nil }
+        
+        header.textField.text = viewModel.query
+        header.textField.addTarget(self, action: #selector(queryDidEdit), for: .editingChanged)
+        header.textField.addTarget(self, action: #selector(queryEditDidEnd), for: [.editingDidEnd, .editingDidEndOnExit])
+
+        return header
     }
 }
 

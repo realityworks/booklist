@@ -12,7 +12,7 @@ class RESTLoaderService: LoaderService {
     func loadBooklist(with query: String, page: Int? = nil, onCompleted: @escaping (Booklist?)->Void) {
         var urlString = "https://api.storytel.net/search?query="
         
-        urlString.append(query)
+        urlString.append(query.replacingOccurrences(of: " ", with: "%20"))
         page.map {
             urlString.append("&page=\($0)")
         }
@@ -35,8 +35,6 @@ class RESTLoaderService: LoaderService {
             
             do {
                 let decoder = JSONDecoder()
-                //let text = String(data: data, encoding: .windowsCP1252)
-                //if let dataFromString = text?.data(using: .utf8, allowLossyConversion: false) {
                 let booklist = try decoder.decode(Booklist.self, from: data)
                 onCompleted(booklist)
 

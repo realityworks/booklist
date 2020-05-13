@@ -21,6 +21,8 @@
 		1DF6F983246C344F00C812A7 /* TableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6F982246C344E00C812A7 /* TableCellView.swift */; };
 		1DF6F985246C358500C812A7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6F984246C358500C812A7 /* ViewModel.swift */; };
 		1DF6F987246C3A0A00C812A7 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6F986246C3A0A00C812A7 /* UIImageView+Extensions.swift */; };
+		1DF6F989246C3E5200C812A7 /* TableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6F988246C3E5200C812A7 /* TableHeader.swift */; };
+		1DF6F98B246C40DF00C812A7 /* LoadingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6F98A246C40DF00C812A7 /* LoadingViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		1DF6F982246C344E00C812A7 /* TableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellView.swift; sourceTree = "<group>"; };
 		1DF6F984246C358500C812A7 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1DF6F986246C3A0A00C812A7 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		1DF6F988246C3E5200C812A7 /* TableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeader.swift; sourceTree = "<group>"; };
+		1DF6F98A246C40DF00C812A7 /* LoadingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewCell.swift; sourceTree = "<group>"; };
 		2F4345DBF9F4746801BB6991 /* Pods_BookList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78E74787819EE7AF039D5A6 /* Pods-BookList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookList.debug.xcconfig"; path = "Target Support Files/Pods-BookList/Pods-BookList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +135,8 @@
 				1D1900AD244042D7004672A8 /* ViewController.swift */,
 				1DF6F982246C344E00C812A7 /* TableCellView.swift */,
 				1DF6F984246C358500C812A7 /* ViewModel.swift */,
+				1DF6F988246C3E5200C812A7 /* TableHeader.swift */,
+				1DF6F98A246C40DF00C812A7 /* LoadingViewCell.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -278,7 +284,9 @@
 				1DF6F97D246C21FB00C812A7 /* RESTLoaderSerivce.swift in Sources */,
 				1DF6F987246C3A0A00C812A7 /* UIImageView+Extensions.swift in Sources */,
 				1DF6F979246C202A00C812A7 /* Booklist.swift in Sources */,
+				1DF6F98B246C40DF00C812A7 /* LoadingViewCell.swift in Sources */,
 				1DF6F97F246C282100C812A7 /* UseCases.swift in Sources */,
+				1DF6F989246C3E5200C812A7 /* TableHeader.swift in Sources */,
 				1DF6F981246C2B9400C812A7 /* Store.swift in Sources */,
 				1DF6F97B246C21DA00C812A7 /* LoaderService.swift in Sources */,
 				1D1900AE244042D7004672A8 /* ViewController.swift in Sources */,

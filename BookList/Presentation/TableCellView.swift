@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TinyConstraints
 
 class TableViewCell: UITableViewCell {
     

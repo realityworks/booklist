@@ -11,7 +11,6 @@ import Foundation
 // We want to keep these in the store, because it's responsible for the list of facts
 protocol StoreLoaderDelegate {
     func didLoadBooklist()
-    func didAppendBooklist()
     var delegateName: String { get }
 }
 
@@ -23,7 +22,7 @@ class Store {
     private (set) var booklist: Booklist? = nil
     
     // Normally we could use something like RX to manage multiple subscriptions, here we just use an array of delegates as an example
-    var delegate: [StoreLoaderDelegate] = []
+    var delegates: [StoreLoaderDelegate] = []
     
     init(useCases: UseCases) {
         self.useCases = useCases
@@ -34,7 +33,7 @@ class Store {
     
     private func onBooklistLoaded(booklist: Booklist?) {
         self.booklist = booklist
-        delegate.forEach { $0.didLoadBooklist() }
+        delegates.forEach { $0.didLoadBooklist() }
     }
     
     private func onBooklistAppend(booklist: Booklist?) {
@@ -45,7 +44,7 @@ class Store {
         self.booklist?.totalCount += booklist.totalCount
         self.booklist?.items.append(contentsOf: booklist.items)
         
-        delegate.forEach { $0.didAppendBooklist() }
+        delegates.forEach { $0.didLoadBooklist() }
     }
 }
 

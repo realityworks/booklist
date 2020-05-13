@@ -84,13 +84,20 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier) as? TableViewCell else { return UITableViewCell() }
         
-        if let book = viewModel.getBook(at: indexPath.row) {
-            cell.configure(with: book)
+        if indexPath.row < viewModel.numberOfBooks {
+            guard let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier) as? TableViewCell else { return UITableViewCell() }
+            
+            if let book = viewModel.getBook(at: indexPath.row) {
+                cell.configure(with: book)
+            }
+            
+            return cell
+        } else {
+            guard let cell: LoadingViewCell = tableView.dequeueReusableCell(withIdentifier: LoadingViewCell.identifier) as? LoadingViewCell else { return UITableViewCell() }
+            viewModel.loadNextPage()
+            return cell
         }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

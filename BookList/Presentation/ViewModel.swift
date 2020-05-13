@@ -23,7 +23,7 @@ class ViewModel {
         self.useCases = dependencies.useCases
     }
     
-    private func load() {
+    func load() {
         useCases.loadData(with: query)
     }
     

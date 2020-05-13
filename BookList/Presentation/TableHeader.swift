@@ -9,14 +9,14 @@
 import UIKit
 
 
-class TableHeader: UIView {
+class TableHeader: UITableViewHeaderFooterView {
     static let identifier = "TableHeader"
     
     let label = UILabel()
     let textField = UITextField()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         
         textField.keyboardType = .asciiCapable
         textField.returnKeyType = .search
@@ -29,7 +29,7 @@ class TableHeader: UIView {
         containerView.edgesToSuperview()
         containerView.height(150)
         
-        addSubview(containerView)
+        contentView.addSubview(containerView)
         
         label.text = "Query: "
         label.width(50)
